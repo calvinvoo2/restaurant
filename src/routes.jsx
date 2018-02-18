@@ -9,14 +9,22 @@ import {
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import Home from "./components/App";
 import RestaurantDetail from "./components/RestaurantDetail";
-
+import AppBar from "material-ui/AppBar";
 export const renderRoutes = () => (
   <HashRouter>
     <MuiThemeProvider>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/restaurant/:slug" component={RestaurantDetail} />
-      </Switch>
+      <div>
+        <AppBar
+          title="GrabMeal | Top 10 Restaurants Around You"
+          iconClassNameRight="muidocs-icon-navigation-expand-more"
+          showMenuIconButton={false}
+          style={{ backgroundColor: "#013243" }}
+        />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/restaurant/:slug" component={RestaurantDetail} />
+        </Switch>
+      </div>
     </MuiThemeProvider>
   </HashRouter>
 );

@@ -9,12 +9,12 @@ import DatePicker from "material-ui/DatePicker";
 import TimePicker from "material-ui/TimePicker";
 import Slider from "material-ui/Slider";
 import TextField from "material-ui/TextField";
+import FontIcon from "material-ui/FontIcon";
 
 import RestaurantCard from "./RestaurantCard";
 import * as actions from "../actions";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-
 import {
   Card,
   CardActions,
@@ -63,6 +63,8 @@ class RestaurantDetail extends Component {
   handlerBook() {
     if (
       !this.state.formData.numberOfPerson ||
+      !this.state.formData.name ||
+      !this.state.formData.phone ||
       !this.state.formData.date ||
       !this.state.formData.time
     ) {
@@ -98,6 +100,11 @@ class RestaurantDetail extends Component {
   renderDetail() {
     const actions = [
       <FlatButton
+        label="Cancel"
+        keyboardFocused={true}
+        onClick={this.handleClose.bind(this)}
+      />,
+      <FlatButton
         label="Ok"
         primary={true}
         keyboardFocused={true}
@@ -130,9 +137,13 @@ class RestaurantDetail extends Component {
             <CardText>Rating: {restaurantData.rating}/5</CardText>
             <CardText>{restaurantData.description}</CardText>
             <CardActions>
+              <Link to={"/"}>
+                <RaisedButton label="< Back To List" secondary={true} />
+              </Link>
               <RaisedButton
                 label="Make a reservation"
                 onClick={this.handleOpen}
+                primary={true}
               />
             </CardActions>
             <CardText>
@@ -150,10 +161,27 @@ class RestaurantDetail extends Component {
           >
             Please input the number of persons and the dates of the reservation:
             <TextField
+              hintText="Calvin Klein"
+              onChange={this.handleForm.bind(this)}
+              name="name"
+              floatingLabelText="Your Name"
+              value={this.state.formData.name}
+            />
+            <br />
+            <TextField
+              hintText="Phone Number"
+              onChange={this.handleForm.bind(this)}
+              name="phone"
+              value={this.state.formData.phone}
+              floatingLabelText="Your Phone Number"
+            />
+            <br />
+            <TextField
               hintText="No of person"
               onChange={this.handleForm.bind(this)}
               name="numberOfPerson"
               value={this.state.formData.numberOfPerson}
+              floatingLabelText="Number of persons"
             />
             <DatePicker
               hintText="Date"
@@ -183,14 +211,7 @@ class RestaurantDetail extends Component {
   }
 
   render() {
-    return (
-      <div>
-        <Link to={"/"}>
-          <RaisedButton label="Back To List" />
-        </Link>
-        {this.renderDetail()}
-      </div>
-    );
+    return <div>{this.renderDetail()}</div>;
   }
 }
 function mapStateToProps({ restaurantDetail }) {

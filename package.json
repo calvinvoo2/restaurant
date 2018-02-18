@@ -5,17 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --progress --colors --config ./webpack.config.js"
+    "start":
+      "webpack-dev-server --progress --colors --config ./webpack.config.js",
+    "start-webpack": "npm run webpack"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "babel": {
-    "presets": [
-      "env",
-      "react",
-      "stage-2"
-    ]
+    "presets": ["env", "react", "stage-2"]
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

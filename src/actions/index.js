@@ -210,14 +210,18 @@ export const bookRestaurant = (currDetail, data) => {
     _id           | required  | Id of the restaurant        |               | 65sd7s6d76sd7b
     numberOfPerson| required  | No of person to reserve     |               | 3
     date          | required  | Date of the reservation     |               | 2018-02-14
-    time          | required  | Time of the reservatoin     |               | 20.00
+    time          | required  | Time of the reservation     |               | 20.00
+    name          | required  | Name of the person          |               | Calvin
+    phone         | required  | Phone number to be called   |               | 0878855578
 
     Example Request
       axios.post('/book-restaurant', {
         _id: '65sd7s6d76sd7b',
         numberOfPerson: 5,
-        date: 2018-07-02,
-        time: 20:00
+        date: "2018-07-02",
+        time: "20:00",
+        name: "Calvin",
+        phone: "048856968"
       })
       .then(function (response) {
         console.log(response);
