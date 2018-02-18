@@ -22,7 +22,8 @@ const styles = {
     height: 250
   },
   cardMediaImage: {
-    height: 250
+    height: 250,
+    width: "100%"
   }
 };
 
@@ -37,12 +38,18 @@ const RestaurantCard = ({ restaurant, index }) => {
         showExpandableButton={true}
         titleStyle={styles.cardTitleText}
       />
-      <CardMedia expandable={true} mediaStyle={styles.cardMediaImage}>
-        <div>
+      <CardMedia expandable={true}>
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "space-around"
+          }}
+        >
           <GridList
-            cols={4}
+            cols={3}
             cellHeight={200}
-            padding={1}
+            padding={0}
             style={styles.gridList}
           >
             <GridTile cols={1} rows={1} style={{ padding: 0 }}>
@@ -59,13 +66,13 @@ const RestaurantCard = ({ restaurant, index }) => {
                 expandable={true}
               />
               <CardText expandable={true} style={{ maxHeight: 100 }}>
-                {restaurantData.description}
+                {restaurantData.description.length > 65
+                  ? restaurantData.description.substr(0, 65 - 1) + "..."
+                  : restaurantData.description}
               </CardText>
-            </GridTile>
-            <GridTile cols={1} rows={1}>
               <CardActions expandable={true}>
                 <Link to={"/restaurant/" + restaurantData.slug}>
-                  <RaisedButton label="View Detail" primary={true} />
+                  <RaisedButton label="View" primary={true} />
                 </Link>
               </CardActions>
             </GridTile>

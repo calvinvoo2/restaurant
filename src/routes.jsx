@@ -19,6 +19,7 @@ export const renderRoutes = () => (
           iconClassNameRight="muidocs-icon-navigation-expand-more"
           showMenuIconButton={false}
           style={{ backgroundColor: "#013243" }}
+          titleStyle={{ fontSize: "3vw" }}
         />
         <Switch>
           <Route exact path="/" component={Home} />

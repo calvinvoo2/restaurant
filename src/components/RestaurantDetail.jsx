@@ -158,6 +158,7 @@ class RestaurantDetail extends Component {
             modal={false}
             open={this.state.open}
             onRequestClose={this.handleClose}
+            autoScrollBodyContent={true}
           >
             Please input the number of persons and the dates of the reservation:
             <TextField
