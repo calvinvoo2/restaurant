@@ -13,8 +13,8 @@ export const fetchRestaurantDetail = slug => {
     Name      | Required  | Description           | Default Value | Example
     slug      | required  | restaurant slug       |               | sushi-tei
 
-
-    Example Request
+    Example GET Request
+    The data will be based on the slug
     axios
       .get("/restaurant?slug=sushi-tei")
       .then(res => dispatch({ type: FETCH_RESTAURANT_DETAIL, payload: res }));
@@ -53,7 +53,10 @@ export const fetchRestaurantDetail = slug => {
     dispatch({ type: FETCH_RESTAURANT_DETAIL, payload: res });
   };
 };
-export const fetchTopRestaurantList = () => {
+export const fetchTopRestaurantList = location => {
+  if (!location) {
+    location = "Jakarta";
+  }
   return function(dispatch) {
     /* It should fire the Get Restaurant List API here
     This API will get the top restaurant on locations provided
@@ -61,12 +64,12 @@ export const fetchTopRestaurantList = () => {
     Name      | Required  | Description                 | Default Value | Example
     location  | required  | Location for the restaurants| Jakarta       | Jakarta
 
-
-    Example Request
+    Example GET Request
     axios
       .get("/top-restaurants?location='Jakarta'")
       .then(res => dispatch({ type: FETCH_USER, payload: res }));
 
+    The data will be based on the location
     Example Response
     {
       data: {
@@ -81,7 +84,8 @@ export const fetchTopRestaurantList = () => {
           }
         ],
         ...
-      }
+      },
+      location: "Jakarta"
     }
     */
 
@@ -91,7 +95,7 @@ export const fetchTopRestaurantList = () => {
         _id: "5a883faaa3e0a81991f0dc46",
         name: "Sushi Tei",
         cuisineType: "Japanese Food",
-        location: "North Jakarta",
+        location: location,
         rating: 4,
         headerImageSrc:
           "http://www.gurneyplaza.com.my/-/media/cma-malls/websites/regional/malaysia/storefront_560/s/sushitei.jpg",
@@ -102,7 +106,7 @@ export const fetchTopRestaurantList = () => {
         _id: "5a883faaa3e0a81991f0cc46",
         name: "Gyukaku",
         cuisineType: "Japanese Food",
-        location: "North Jakarta",
+        location: location,
         rating: 5,
         headerImageSrc: "https://i.ytimg.com/vi/_RrOlmqAoKM/maxresdefault.jpg",
         description: "Japanese barbeque all you can eat",
@@ -112,7 +116,7 @@ export const fetchTopRestaurantList = () => {
         _id: "5a883faaa3e0a81991f0cx46",
         name: "Veniam",
         cuisineType: "Western Food",
-        location: "North Jakarta",
+        location: location,
         rating: 1,
         headerImageSrc: "http://placehold.it/32x32",
         description:
@@ -123,7 +127,7 @@ export const fetchTopRestaurantList = () => {
         _id: "5a883faa4c16533794024317",
         name: "Magnate",
         cuisineType: "Western Food",
-        location: "Central Jakarta",
+        location: location,
         rating: 3,
         headerImageSrc: "http://placehold.it/32x32",
         description:
@@ -134,7 +138,7 @@ export const fetchTopRestaurantList = () => {
         _id: "5a883faa35c2c365348ed695",
         name: "Excepteur",
         cuisineType: "Western Food",
-        location: "Central Jakarta",
+        location: location,
         rating: 4,
         headerImageSrc: "http://placehold.it/32x32",
         description:
@@ -145,7 +149,7 @@ export const fetchTopRestaurantList = () => {
         _id: "5a883faa504e7fb8092499c1",
         name: "Reprehenderit",
         cuisineType: "Western Food",
-        location: "South Jakarta",
+        location: location,
         rating: 2,
         headerImageSrc: "http://placehold.it/32x32",
         description:
@@ -156,7 +160,7 @@ export const fetchTopRestaurantList = () => {
         _id: "5a883faa2ac0acf6ae82c9eb",
         name: "Eiusmod",
         cuisineType: "Western Food",
-        location: "South Jakarta",
+        location: location,
         rating: 1,
         headerImageSrc: "http://placehold.it/32x32",
         description:
@@ -167,7 +171,7 @@ export const fetchTopRestaurantList = () => {
         _id: "5a883faad0fac8b29bc3f5d2",
         name: "Magna",
         cuisineType: "Western Food",
-        location: "North Jakarta",
+        location: location,
         rating: 5,
         headerImageSrc: "http://placehold.it/32x32",
         description:
@@ -178,7 +182,7 @@ export const fetchTopRestaurantList = () => {
         _id: "5a883faa7a369c217a893435",
         name: "Labore",
         cuisineType: "Western Food",
-        location: "North Jakarta",
+        location: location,
         rating: 1,
         headerImageSrc: "http://placehold.it/32x32",
         description:
@@ -189,7 +193,7 @@ export const fetchTopRestaurantList = () => {
         _id: "5a883faa87a545d6b6824acb",
         name: "Voluptate",
         cuisineType: "Western Food",
-        location: "Central Jakarta",
+        location: location,
         rating: 1,
         headerImageSrc: "http://placehold.it/32x32",
         description:
@@ -197,6 +201,7 @@ export const fetchTopRestaurantList = () => {
         slug: "voluptate"
       }
     ];
+    res.location = location;
     dispatch({ type: FETCH_TOP_RESTAURANT_LIST, payload: res });
   };
 };
@@ -214,7 +219,7 @@ export const bookRestaurant = (currDetail, data) => {
     name          | required  | Name of the person          |               | Calvin
     phone         | required  | Phone number to be called   |               | 0878855578
 
-    Example Request
+    Example POST Request
       axios.post('/book-restaurant', {
         _id: '65sd7s6d76sd7b',
         numberOfPerson: 5,

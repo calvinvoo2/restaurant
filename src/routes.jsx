@@ -15,7 +15,7 @@ export const renderRoutes = () => (
     <MuiThemeProvider>
       <div>
         <AppBar
-          title="Top 10 Restaurants Around You"
+          title="Top 10 Restaurants"
           iconClassNameRight="muidocs-icon-navigation-expand-more"
           showMenuIconButton={false}
           style={{ backgroundColor: "#013243" }}
