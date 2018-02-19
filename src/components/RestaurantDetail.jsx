@@ -1,15 +1,10 @@
 import React, { Component } from "react";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import RaisedButton from "material-ui/RaisedButton";
-import { GridList, GridTile } from "material-ui/GridList";
-import IconButton from "material-ui/IconButton";
-import StarBorder from "material-ui/svg-icons/toggle/star-border";
 import Dialog from "material-ui/Dialog";
 import DatePicker from "material-ui/DatePicker";
 import TimePicker from "material-ui/TimePicker";
-import Slider from "material-ui/Slider";
 import TextField from "material-ui/TextField";
-import FontIcon from "material-ui/FontIcon";
 
 import RestaurantCard from "./RestaurantCard";
 import * as actions from "../actions";
@@ -44,22 +39,22 @@ class RestaurantDetail extends Component {
     formData: {},
     error: ""
   };
-
+  //Open form dialog
   handleOpen = () => {
     this.setState({ open: true, error: "", formData: {} });
   };
 
+  //Close form dialog
   handleClose = () => {
     this.setState({ open: false });
   };
 
-  handleSlider = (event, value) => {
-    this.setState({ sliderCounter: value });
-  };
-
   componentDidMount() {
+    //Fetch restaurant detail
     this.props.fetchRestaurantDetail(this.props.match.params.slug);
   }
+
+  //Handle validation and submitting
   handlerBook() {
     if (
       !this.state.formData.numberOfPerson ||
@@ -79,18 +74,20 @@ class RestaurantDetail extends Component {
       this.setState({ open: false });
     }
   }
+  //Set state for text input
   handleForm(input, inputValue) {
     var formData = this.state.formData;
     formData[input.target.name] = inputValue;
     this.setState({ formData });
   }
-
+  //Set state for date
   handleDate(date) {
     var formData = this.state.formData;
     formData["date"] = date;
     this.setState({ formData });
   }
 
+  //Set state for time
   handleTime(time) {
     var formData = this.state.formData;
     formData["time"] = time;

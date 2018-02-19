@@ -8,9 +8,8 @@ import {
   CardText
 } from "material-ui/Card";
 import { GridList, GridTile } from "material-ui/GridList";
-import FontIcon from "material-ui/FontIcon";
 
-import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import RaisedButton from "material-ui/RaisedButton";
 
@@ -19,10 +18,10 @@ const styles = {
     fontSize: 20
   },
   gridList: {
-    height: 250
+    height: 250,
+    width: "100%"
   },
   cardMediaImage: {
-    height: 250,
     width: "100%"
   }
 };
@@ -52,7 +51,7 @@ const RestaurantCard = ({ restaurant, index }) => {
             padding={0}
             style={styles.gridList}
           >
-            <GridTile cols={1} rows={1} style={{ padding: 0 }}>
+            <GridTile cols={1} rows={1}>
               <img
                 src={restaurantData.headerImageSrc}
                 alt=""

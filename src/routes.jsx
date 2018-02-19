@@ -15,11 +15,11 @@ export const renderRoutes = () => (
     <MuiThemeProvider>
       <div>
         <AppBar
-          title="GrabMeal | Top 10 Restaurants Around You"
+          title="Top 10 Restaurants Around You"
           iconClassNameRight="muidocs-icon-navigation-expand-more"
           showMenuIconButton={false}
           style={{ backgroundColor: "#013243" }}
-          titleStyle={{ fontSize: "3vw" }}
+          titleStyle={{ fontSize: 20 }}
         />
         <Switch>
           <Route exact path="/" component={Home} />

@@ -1,8 +1,4 @@
 import React, { Component } from "react";
-import RaisedButton from "material-ui/RaisedButton";
-import { GridList, GridTile } from "material-ui/GridList";
-import IconButton from "material-ui/IconButton";
-import StarBorder from "material-ui/svg-icons/toggle/star-border";
 import RestaurantCard from "./RestaurantCard";
 import * as actions from "../actions";
 import { connect } from "react-redux";
