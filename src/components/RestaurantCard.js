@@ -8,7 +8,6 @@ import {
   CardText
 } from "material-ui/Card";
 import { GridList, GridTile } from "material-ui/GridList";
-
 import { Link } from "react-router-dom";
 
 import RaisedButton from "material-ui/RaisedButton";

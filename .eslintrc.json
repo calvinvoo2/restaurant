@@ -10,7 +10,7 @@
   },
   "rules": {
     "no-unreachable": "error",
-    "no-console": ["error", { "allow": ["warn", "error"] }],
+    "no-console": ["warn"],
     "no-unused-vars": [
       1,
       { "vars": "local", "args": "after-used", "argsIgnorePattern": "^_" }

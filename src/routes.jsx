@@ -2,6 +2,8 @@ import React from "react";
 import { HashRouter, Switch, Route } from "react-router-dom";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import Home from "./components/App";
+import Footer from "./components/Footer";
+
 import RestaurantDetail from "./components/RestaurantDetail";
 import AppBar from "material-ui/AppBar";
 export const renderRoutes = () => (
@@ -19,6 +21,9 @@ export const renderRoutes = () => (
           <Route exact path="/" component={Home} />
           <Route exact path="/restaurant/:slug" component={RestaurantDetail} />
         </Switch>
+        <div>
+          <Footer />
+        </div>
       </div>
     </MuiThemeProvider>
   </HashRouter>

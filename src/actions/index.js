@@ -2,8 +2,16 @@
 import {
   FETCH_TOP_RESTAURANT_LIST,
   BOOK_RESTAURANT,
-  FETCH_RESTAURANT_DETAIL
+  FETCH_RESTAURANT_DETAIL,
+  CHANGE_LANGUAGE
 } from "./types";
+
+export const changeLanguage = lang => {
+  return function(dispatch) {
+    /*This is used to change language*/
+    dispatch({ type: CHANGE_LANGUAGE, payload: lang });
+  };
+};
 
 export const fetchRestaurantDetail = slug => {
   return function(dispatch) {

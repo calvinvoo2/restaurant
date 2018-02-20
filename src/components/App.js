@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import RestaurantCard from "./RestaurantCard";
 import RaisedButton from "material-ui/RaisedButton";
 import AutoComplete from "material-ui/AutoComplete";
-
+import strings from "../il8n";
 import { GridList, GridTile } from "material-ui/GridList";
 
 import * as actions from "../actions";
@@ -34,7 +34,7 @@ class App extends Component {
       this.props.fetchTopRestaurantList(this.state.location);
       this.setState({ error: "" });
     } else {
-      this.setState({ error: "Location is not on our list" });
+      this.setState({ error: strings[this.props.lang].locationNotFound });
     }
   };
 
@@ -67,7 +67,7 @@ class App extends Component {
       <div>
         <div>
           <p style={{ fontSize: 20 }}>
-            Showing top 10 restaurants near {" "}
+            {strings[this.props.lang].show10} {" "}
             <span style={styles.cityText}>
               {this.props.restaurant && this.props.restaurant.location
                 ? this.props.restaurant.location
@@ -77,10 +77,10 @@ class App extends Component {
           <GridList cols={3} padding={0} style={{ height: 120 }}>
             <GridTile cols={2}>
               <AutoComplete
-                hintText="Change location"
-                filter={AutoComplete.noFilter}
+                hintText={strings[this.props.lang].changeLocation}
+                filter={AutoComplete.fuzzyFilter}
                 dataSource={this.state.dataSource}
-                floatingLabelText="Location"
+                floatingLabelText={strings[this.props.lang].location}
                 fullWidth={true}
                 onUpdateInput={this.handleForm}
                 errorText={this.state.error ? this.state.error : ""}
@@ -110,8 +110,8 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({ restaurant }) {
-  return { restaurant };
+function mapStateToProps({ restaurant, lang }) {
+  return { restaurant, lang };
 }
 
 export default connect(mapStateToProps, actions)(App);
