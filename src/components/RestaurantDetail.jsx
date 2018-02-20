@@ -164,6 +164,7 @@ class RestaurantDetail extends Component {
             autoScrollBodyContent={true}
           >
             {strings[this.props.lang].inputNo}
+            <br />
             <TextField
               hintText="Calvin Klein"
               onChange={this.handleForm.bind(this)}
