@@ -10,6 +10,11 @@ Used to show a list of restaurant around your area and make reservation made in 
 - Run npm install after cloning this repo
 
 ### Build
+Check eslint using this command:
+```sh
+npm run lint
+```
+
 For development, run
 ```sh
 npm start

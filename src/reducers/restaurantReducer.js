@@ -4,7 +4,6 @@ export default function(state = null, action) {
   switch (action.type) {
     case FETCH_TOP_RESTAURANT_LIST:
       return action.payload || false;
-      break;
     default:
       return state;
   }

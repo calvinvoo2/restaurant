@@ -1,24 +1,20 @@
 import React, { Component } from "react";
-import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import RaisedButton from "material-ui/RaisedButton";
 import Dialog from "material-ui/Dialog";
 import DatePicker from "material-ui/DatePicker";
 import TimePicker from "material-ui/TimePicker";
 import TextField from "material-ui/TextField";
 
-import RestaurantCard from "./RestaurantCard";
 import * as actions from "../actions";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import {
   Card,
   CardActions,
-  CardHeader,
   CardMedia,
   CardTitle,
   CardText
 } from "material-ui/Card";
-import FlatButton from "material-ui/FlatButton";
 
 const styles = {
   cardTitleText: {
@@ -96,14 +92,16 @@ class RestaurantDetail extends Component {
 
   renderDetail() {
     const actions = [
-      <FlatButton
+      <RaisedButton
         label="Cancel"
+        secondary={true}
         keyboardFocused={true}
         onClick={this.handleClose.bind(this)}
       />,
-      <FlatButton
+      <RaisedButton
         label="Ok"
-        primary={true}
+        labelColor="#ecf0f1"
+        backgroundColor="#00b140"
         keyboardFocused={true}
         onClick={this.handlerBook.bind(this)}
       />
@@ -140,7 +138,8 @@ class RestaurantDetail extends Component {
               <RaisedButton
                 label="Make a reservation"
                 onClick={this.handleOpen}
-                primary={true}
+                labelColor="#ecf0f1"
+                backgroundColor="#00b140"
               />
             </CardActions>
             <CardText>

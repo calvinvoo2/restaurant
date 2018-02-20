@@ -1,4 +1,4 @@
-import axios from "axios";
+// import axios from "axios";
 import {
   FETCH_TOP_RESTAURANT_LIST,
   BOOK_RESTAURANT,
@@ -46,7 +46,7 @@ export const fetchRestaurantDetail = slug => {
       headerImageSrc:
         "http://www.gurneyplaza.com.my/-/media/cma-malls/websites/regional/malaysia/storefront_560/s/sushitei.jpg",
       description: "This lovely japanese family restaurant",
-      slug: "sushi-tei",
+      slug: slug,
       phone: "2-8956578",
       address: "Emporium Pluit 4th floor"
     };
@@ -248,9 +248,7 @@ export const bookRestaurant = (currDetail, data) => {
     */
     var booked = {
       isBooked: true,
-      time: "20:00",
-      date: "2019-02-14",
-      numberOfPerson: 3
+      formData: data
     };
     currDetail.booked = booked;
     dispatch({ type: BOOK_RESTAURANT, payload: currDetail });

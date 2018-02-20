@@ -71,7 +71,11 @@ const RestaurantCard = ({ restaurant, index }) => {
               </CardText>
               <CardActions expandable={true}>
                 <Link to={"/restaurant/" + restaurantData.slug}>
-                  <RaisedButton label="View" primary={true} />
+                  <RaisedButton
+                    label="View"
+                    labelColor="#ecf0f1"
+                    backgroundColor="#00b140"
+                  />
                 </Link>
               </CardActions>
             </GridTile>

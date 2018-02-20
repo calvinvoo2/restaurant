@@ -38,9 +38,9 @@ class App extends Component {
     }
   };
 
-  handleForm = (input, inputValue) => {
+  handleForm = (input, locationList) => {
     this.setState({ location: "" });
-    if (inputValue.indexOf(input) > -1) {
+    if (locationList.indexOf(input) > -1) {
       this.setState({ location: input });
     }
   };
@@ -66,7 +66,7 @@ class App extends Component {
     return (
       <div>
         <div>
-          <p>
+          <p style={{ fontSize: 20 }}>
             Showing top 10 restaurants near {" "}
             <span style={styles.cityText}>
               {this.props.restaurant && this.props.restaurant.location
@@ -78,11 +78,17 @@ class App extends Component {
             <GridTile cols={2}>
               <AutoComplete
                 hintText="Change location"
+                filter={AutoComplete.noFilter}
                 dataSource={this.state.dataSource}
                 floatingLabelText="Location"
                 fullWidth={true}
                 onUpdateInput={this.handleForm}
                 errorText={this.state.error ? this.state.error : ""}
+                textFieldStyle={{ color: "#00B140" }}
+                floatingLabelFocusStyle={{ color: "#00B140" }}
+                underlineStyle={{ borderColor: "#00B140" }}
+                underlineFocusStyle={{ borderColor: "#00B140" }}
+                floatingLabelShrinkStyle={{ color: "#00B140" }}
               />
             </GridTile>
 
@@ -90,8 +96,9 @@ class App extends Component {
               <RaisedButton
                 label="Go"
                 onClick={this.handleChangeLocation}
-                primary={true}
                 style={{ marginTop: 20 }}
+                labelColor="#ecf0f1"
+                backgroundColor="#00b140"
               />
             </GridTile>
           </GridList>

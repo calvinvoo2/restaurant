@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  HashRouter,
-  BrowserRouter,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { HashRouter, Switch, Route } from "react-router-dom";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import Home from "./components/App";
 import RestaurantDetail from "./components/RestaurantDetail";
@@ -18,7 +12,7 @@ export const renderRoutes = () => (
           title="Top 10 Restaurants"
           iconClassNameRight="muidocs-icon-navigation-expand-more"
           showMenuIconButton={false}
-          style={{ backgroundColor: "#013243" }}
+          style={{ backgroundColor: "#00B140" }}
           titleStyle={{ fontSize: 20 }}
         />
         <Switch>
